@@ -1,16 +1,17 @@
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import { Path } from "./layouts/Paths";
+import { NavigationBar } from "./components";
 
 function App() {
-	const [toggle, setToggle] = React.useState(false);
-
 	return (
-		<div className="App">
-			<h1>Hello {toggle ? "World!" : "Team 7!"}</h1>
-			<Button onClick={() => setToggle((prev) => !prev)}>Click</Button>
-		</div>
+		<React.Fragment>
+			<NavigationBar />
+			<Container fluid>
+				<Path />
+			</Container>
+		</React.Fragment>
 	);
 }
 
