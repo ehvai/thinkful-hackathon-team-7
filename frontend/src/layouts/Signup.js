@@ -3,6 +3,7 @@ import SignupForm from "../components/signup/SignupForm";
 import { createUser } from "../utils/api";
 
 function Signup() {
+    
   const initialState = {
     user_email: "",
     user_alias: "",
