@@ -1,7 +1,19 @@
 const router = require("express").Router();
-const controller = require("./industry.controller");
+const industryController = require("./industry.controller");
+const companyController = require("../company/company.controller");
 const methodNotAllowed = require("../errors/methodNotAllowed");
+const industryIdExists = require("../validations/industryIdExists");
 
-router.route("/").get(controller.list).all(methodNotAllowed);
+router
+  .route("/:industry_id/company")
+  .post(industryIdExists, companyController.create)
+  .put(industryIdExists, companyController.update)
+  .all(methodNotAllowed);
+
+router
+  .route("/")
+  .get(industryController.list)
+  .post(industryController.create)
+  .all(methodNotAllowed);
 
 module.exports = router;

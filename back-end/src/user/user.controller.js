@@ -33,7 +33,7 @@ module.exports = {
   ],
   update: [
     asyncErrorBoundary(userIdExists),
-    hasProperties(REQUIRED_PROPERTIES),
+    hasRequiredProperties,
     asyncErrorBoundary(update),
   ],
 };
