@@ -68,9 +68,35 @@ export async function loginCredentials(user, signal) {
 	return await fetchJson(url, options, {});
 }
 
-// api call for creating account
+/**
+ * Send a Post request to login
+ * @return {Promise<[user login]>}
+ *  a promise
+ */
+export async function logoutCredentials(signal) {
+	const url = `${API_BASE_URL}/user/logout`;
+	const options = {
+		method: "GET",
+		headers,
+		signal,
+	};
 
+	return await fetchJson(url, options, {});
+}
 
+/**
+ * Send a Post request to create a user's login
+ * @return {Promise<[new user]>}
+ *  a promise with new user
+ */
+export async function createUser(user, signal) {
+	const url = `${API_BASE_URL}/user`;
+	const options = {
+		method: "POST",
+		headers,
+		body: JSON.stringify({ data: user }),
+		signal,
+	};
 
 	return await fetchJson(url, options, {});
 }
