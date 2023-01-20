@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
-import LoginForm from "../components/login/LoginForm";
+import Login from "./Login";
 
 export const Home = () => {
 	const [showLogin, setShowLogin] = useState(false);
@@ -20,7 +20,7 @@ export const Home = () => {
 				<Modal.Title>Log In</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<LoginForm />
+				<Login />
 			</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={handleLoginClose}>

@@ -3,40 +3,36 @@ import React from "react";
 function LoginForm({ submitHandler, changeHandler, credentials }) {
   return (
     <form onSubmit={submitHandler}>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+      <div className="form-group">
+        <label htmlfor="user_email">Email address</label>
         <input
           type="email"
           className="form-control"
-          id="inputEmail"
+          id="user_email"
           aria-describedby="emailHelp"
-          name="inputEmail"
+          name="user_email"
           required={true}
           onChange={changeHandler}
-          value={credentials}
+          // change to user_email
+          value={credentials.user_email}
         />
         <small id="emailHelp" class="form-text text-muted">
           We'll never share your email with anyone else.
         </small>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+      <div className="form-group">
+        <label htmlfor="user_password">Password</label>
         <input
           type="password"
           className="form-control"
-          id="exampleInputPassword1"
+          id="user_password"
+          name="user_password"
+          required={true}
+          onChange={changeHandler}
+          value={credentials.user_password}
         />
       </div>
-      <div class="form-group form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label class="form-check-label" for="exampleCheck1">
-          Check me out
-        </label>
-      </div>
+
       <button type="submit" className="btn btn-primary">
         Submit
       </button>
