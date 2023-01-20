@@ -1,4 +1,4 @@
-const service = require("../user/user.service");
+const service = require("../../user/user.service");
 
 async function userIdExists(req, res, next) {
   const { user_id } = req.body.data;
