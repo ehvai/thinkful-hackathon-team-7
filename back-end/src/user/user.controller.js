@@ -1,9 +1,9 @@
 const service = require("./user.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const userIdExists = require("../validations/userIdExists");
+const userIdExists = require("../validations/user/userIdExists");
 const hasProperties = require("../validations/hasProperties");
-const userExists = require("../validations/userExists");
-const userEmailPasswordValidated = require("../validations/userEmailPasswordValidated");
+const userExists = require("../validations/user/userExists");
+const userEmailPasswordValidated = require("../validations/user/userEmailPasswordValidated");
 
 const REQUIRED_PROPERTIES = ["user_alias", "user_password", "user_email"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);

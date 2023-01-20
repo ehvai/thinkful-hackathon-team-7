@@ -1,8 +1,8 @@
 const service = require("./company.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const companyIdExists = require("../validations/companyIdExists");
+const companyIdExists = require("../validations/company/companyIdExists");
 const hasProperties = require("../validations/hasProperties");
-const companyExists = require("../validations/companyExists");
+const companyExists = require("../validations/company/companyExists");
 
 const REQUIRED_PROPERTIES = ["company_name"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);

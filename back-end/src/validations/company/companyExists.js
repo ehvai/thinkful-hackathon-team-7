@@ -1,4 +1,4 @@
-const service = require("../company/company.service");
+const service = require("../../company/company.service");
 
 async function companyExists(req, res, next) {
   const company = await service.list();
