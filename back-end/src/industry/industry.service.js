@@ -1,7 +1,7 @@
 const knex = require("../db/connection");
 
 function list() {
-  return knex("contributor").select("*");
+  return knex("industry").select("*");
 }
 
 module.exports = {
