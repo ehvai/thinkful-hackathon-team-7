@@ -22,9 +22,14 @@ function update(user) {
     .then((updatedUser) => updatedUser[0]);
 }
 
+function validate(user_email) {
+  return knex("user").select("*").where({ user_email }).first();
+}
+
 module.exports = {
   list,
   read,
   create,
   update,
+  validate,
 };

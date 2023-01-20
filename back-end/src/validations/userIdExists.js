@@ -1,14 +1,15 @@
 const service = require("../user/user.service");
 
 async function userIdExists(req, res, next) {
-  const user = await service.read(req.params.user_id);
+  const { user_id } = req.body.data;
+  const user = await service.read(user_id);
 
   if (user) {
     res.locals.user = user;
     return next();
   }
 
-  return next({ status: 404, message: `${req.params.user_id} not found` });
+  return next({ status: 404, message: `${user_id} not found` });
 }
 
 module.exports = userIdExists;
