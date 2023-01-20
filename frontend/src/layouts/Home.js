@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col, Modal } from "react-bootstrap";
 import Login from "./Login";
+import Signup from "./Signup";
 
 export const Home = () => {
 	const [showLogin, setShowLogin] = useState(false);
@@ -35,7 +36,9 @@ export const Home = () => {
 			<Modal.Header closeButton>
 				<Modal.Title>Sign Up</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>Sign uppppp</Modal.Body>
+			<Modal.Body>
+				<Signup />
+			</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={handleSignUpClose}>
 					Close
