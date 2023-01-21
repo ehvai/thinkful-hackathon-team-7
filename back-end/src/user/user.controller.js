@@ -5,7 +5,7 @@ const hasProperties = require("../validations/hasProperties");
 const userExists = require("../validations/user/userExists");
 const userEmailPasswordValidated = require("../validations/user/userEmailPasswordValidated");
 
-const REQUIRED_PROPERTIES = ["user_alias", "user_password", "user_email"];
+const REQUIRED_PROPERTIES = ["user_name", "user_password", "user_email"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);
 
 // A complete list of users ONLY FOR TESTING PURPOSES - This functionality is not for integration in the front end.
