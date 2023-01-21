@@ -9,7 +9,6 @@ function read(user_id) {
     return trx("user")
       .where({ user_id })
       .returning("*")
-      .first()
       .then(() => {
         return trx("comment").where({ user_id }).returning("*");
       });
@@ -23,15 +22,27 @@ function create(newUser) {
 }
 
 function update(user) {
-  return knex("user")
-    .select("*")
-    .where({ user_id: user.user_id })
-    .update(user, "*")
-    .then((updatedUser) => updatedUser[0]);
+  return knex.transation(function (trx) {
+    return trx("user")
+      .returning("*")
+      .where({ user_id: user.user_id })
+      .update(user, "user_*")
+      .then(() => {
+        return trx("process")
+          .where({ user_id: user.user_id })
+          .update(user, "process_*")
+          .returning("*")
+          .then((updatedUser) => updatedUser[0]);
+      });
+  });
 }
 
-function validate(user_email) {
+function validateEmail(user_email) {
   return knex("user").select("*").where({ user_email }).first();
+}
+
+function validateUser(user_id) {
+  return knex("user").select("*").where({ user_id }).first();
 }
 
 module.exports = {
@@ -39,5 +50,6 @@ module.exports = {
   read,
   create,
   update,
-  validate,
+  validateEmail,
+  validateUser,
 };

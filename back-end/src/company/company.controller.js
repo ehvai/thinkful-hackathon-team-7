@@ -3,8 +3,9 @@ const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const companyIdExists = require("../validations/company/companyIdExists");
 const hasProperties = require("../validations/hasProperties");
 const companyExists = require("../validations/company/companyExists");
+const industryIdExists = require("../validations/industry/industryIdExists");
 
-const REQUIRED_PROPERTIES = ["company_name"];
+const REQUIRED_PROPERTIES = ["company_name", "industry_id"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);
 
 // Returns the full list of companies
@@ -15,7 +16,9 @@ async function list(req, res) {
 
 // Returns a single company.  company_id is required
 async function read(req, res) {
-  res.json({ data: res.locals.company });
+  const { company_id } = res.locals.company;
+  const company = await service.read(company_id);
+  res.json({ data: company });
 }
 
 // Creates a single company
@@ -34,6 +37,7 @@ module.exports = {
   read: [asyncErrorBoundary(companyIdExists), read],
   create: [
     hasRequiredProperties,
+    asyncErrorBoundary(industryIdExists),
     asyncErrorBoundary(companyExists),
     asyncErrorBoundary(create),
   ],
