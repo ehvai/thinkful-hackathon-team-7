@@ -1,7 +1,7 @@
 const service = require("../../user/user.service");
 
 async function userEmailPasswordValidated(req, res, next) {
-  const user = await service.validate(req.body.data.user_email);
+  const user = await service.validateEmail(req.body.data.user_email);
 
   if (user) {
     if (user.user_password == req.body.data.user_password) {
