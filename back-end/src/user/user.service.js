@@ -10,7 +10,12 @@ function read(user_id) {
       .where({ user_id })
       .returning("*")
       .then(() => {
-        return trx("comment").where({ user_id }).returning("*");
+        return trx("comment")
+          .where({ user_id })
+          .returning("*")
+          .then(() => {
+            return trx("process").where({ user_id }).returning("*");
+          });
       });
   });
 }
