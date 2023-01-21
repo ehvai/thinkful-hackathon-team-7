@@ -1,7 +1,7 @@
 const knex = require("../db/connection");
 
 function list() {
-  return knex("user").select("*");
+  return knex("user").select("user_email");
 }
 
 function read(user_id) {
