@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Button, Card, Row, Col, Modal } from "react-bootstrap";
+import { Button, Card, Row, Col, Stack, Modal, Form } from "react-bootstrap";
 import Login from "./Login";
 
-export const Home = () => {
+export const SplashPage = () => {
 	const [showLogin, setShowLogin] = useState(false);
 	const [showSignUp, setShowSignUp] = useState(false);
 
@@ -48,14 +48,35 @@ export const Home = () => {
 		<div>
 			<div>{loginModal}</div>
 			<div>{signUpModal}</div>
-			<Row className="py-4">
-				<div className="d-flex text-center flex-column">
+			<Row className="py-4 d-flex text-center flex-column gap-4">
+				<Stack>
 					<h1>Welcome to JobSeekrz</h1>
+
 					<h4>Uniting People on the Job Hunt</h4>
-				</div>
+				</Stack>
+				<Stack gap={0}>
+					<div>
+						A collaborative space created for job searcher, by job searchers.
+					</div>
+					<div>
+						Learn about others' job hunting experience at similar industries and
+						companies.
+					</div>
+					<div>
+						Filter your search by industry, company, location, remote vs hybrid,
+						and more.
+					</div>
+				</Stack>
+				<Stack>
+					<p>
+						Connect with like minded people who have knowledge to share about
+						their job hunting experience and what worked best for them and what
+						didn't
+					</p>
+				</Stack>
 			</Row>
-			<Row className="d-flex justify-content-evenly">
-				<Card style={{ width: "18rem" }}>
+			<Row className="py-4 d-flex justify-content-evenly gap-3">
+				<Card bg="secondary" text="light" style={{ width: "18rem" }}>
 					<Card.Body>
 						<Card.Title>Quote of the Day:</Card.Title>
 						<Card.Text>
@@ -78,21 +99,35 @@ export const Home = () => {
 			<Row className="py-4">
 				<Col className="d-flex justify-content-evenly">
 					<Button
-						className="btn-lg px-4"
-						variant="primary"
+						className="btn-lg px-5"
+						variant="light"
 						onClick={handleSignUpShow}
 					>
 						Sign Up
 					</Button>
 
 					<Button
-						className="btn-lg px-4"
-						variant="primary"
+						className="btn-lg px-5"
+						variant="secondary"
 						onClick={handleLoginShow}
 					>
 						Login
 					</Button>
 				</Col>
+			</Row>
+			<Row className="py-2">
+				<div
+					size={2}
+					className="d-flex flex-column align-items-center text-center gap-2"
+				>
+					<Button variant="light" as="a" className="w-25" size="lg" href="">
+						Continue as Guest
+					</Button>
+					<Form.Text className="w-50">
+						* You will not be able to comment or save searches until you create
+						an account
+					</Form.Text>
+				</div>
 			</Row>
 		</div>
 	);

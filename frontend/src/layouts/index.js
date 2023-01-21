@@ -1,2 +1,3 @@
-export * from "./Home";
-export * from "./Path";
+export * from "./SplashPage";
+export * from "./Paths";
+export * from "./Footer";
