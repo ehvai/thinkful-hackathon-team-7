@@ -1,4 +1,4 @@
-const service = require("../industry/industry.service");
+const service = require("../../industry/industry.service");
 
 async function industryExists(req, res, next) {
   const industry = await service.list();

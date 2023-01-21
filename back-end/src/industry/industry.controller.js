@@ -1,8 +1,8 @@
 const service = require("./industry.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../validations/hasProperties");
-const industryExists = require("../validations/industryExists");
-const industryIdExists = require("../validations/industryIdExists");
+const industryExists = require("../validations/industry/industryExists");
+const industryIdExists = require("../validations/industry/industryIdExists");
 
 const REQUIRED_PROPERTIES = ["industry_name"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);

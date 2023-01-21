@@ -1,14 +1,27 @@
 const service = require("./user.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
-const userIdExists = require("../validations/userIdExists");
+const userIdExists = require("../validations/user/userIdExists");
 const hasProperties = require("../validations/hasProperties");
-const userExists = require("../validations/userExists");
+const userExists = require("../validations/user/userExists");
+const userEmailPasswordValidated = require("../validations/user/userEmailPasswordValidated");
 
-const REQUIRED_PROPERTIES = ["user_login", "user_password", "user_email"];
+const REQUIRED_PROPERTIES = ["user_alias", "user_password", "user_email"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);
+
+// A complete list of users ONLY FOR TESTING PURPOSES - This functionality is not for integration in the front end.
+async function list(req, res) {
+  const users = await service.list();
+  res.json({ data: users });
+}
 
 // Returns a single user as requested by the user_id.  If no ID is provided, an error message is returned via the userIdExists validation.
 async function read(req, res) {
+  const { user_id } = res.locals.user;
+  const user = await service.read(user_id);
+  res.json({ data: user });
+}
+
+async function verifyLogin(req, res) {
   res.json({ data: res.locals.user });
 }
 
@@ -25,7 +38,9 @@ async function update(req, res) {
 }
 
 module.exports = {
+  list: [asyncErrorBoundary(list)],
   read: [asyncErrorBoundary(userIdExists), read],
+  verifyLogin: [asyncErrorBoundary(userEmailPasswordValidated), verifyLogin],
   create: [
     hasRequiredProperties,
     asyncErrorBoundary(userExists),
