@@ -16,7 +16,9 @@ async function list(req, res) {
 
 // Returns a single user as requested by the user_id.  If no ID is provided, an error message is returned via the userIdExists validation.
 async function read(req, res) {
-  res.json({ data: res.locals.user });
+  const { user_id } = res.locals.user;
+  const user = await service.read(user_id);
+  res.json({ data: user });
 }
 
 async function verifyLogin(req, res) {
