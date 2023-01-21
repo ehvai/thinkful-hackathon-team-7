@@ -1,9 +1,9 @@
 const service = require("../../user/user.service");
 
 async function userExists(req, res, next) {
-  const user = await service.list();
+  const user = await service.validateEmail(req.body.data.user_email);
 
-  if (user.user_email) {
+  if (user) {
     return next({ status: 404, message: `${user.user_email} exists` });
   }
 
