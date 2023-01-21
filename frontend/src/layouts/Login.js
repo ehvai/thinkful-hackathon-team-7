@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import LoginForm from "../components/login/LoginForm";
 import { loginCredentials } from "../utils/api";
 
@@ -17,7 +16,7 @@ export function Login() {
 		evt.preventDefault();
 		try {
 			const abortController = new AbortController();
-			await loginCredentials({ data: credentials }, abortController.signal);
+			await loginCredentials(credentials, abortController.signal); // changed { data: credentials } to credentials
 		} catch (error) {
 			console.log(error);
 		}

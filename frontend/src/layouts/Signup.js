@@ -10,7 +10,7 @@ export function Signup() {
 	};
 
 	const [newAccount, setNewAccount] = useState(initialState);
-
+	console.log(newAccount);
 	async function submitHandler(evt) {
 		evt.preventDefault();
 		try {
