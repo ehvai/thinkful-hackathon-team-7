@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col, Stack, Modal, Form } from "react-bootstrap";
-import Login from "./Login";
-import Signup from "./Signup";
+import { Login, Signup } from "../layouts";
 
 export const SplashPage = () => {
 	const [showLogin, setShowLogin] = useState(false);
