@@ -1,7 +1,7 @@
 const service = require("../../company/company.service");
 
 async function companyIdExists(req, res, next) {
-  const { company_id } = req.body.data;
+  const { company_id } = req.params;
   const company = await service.validateCompany(company_id);
 
   if (company) {
