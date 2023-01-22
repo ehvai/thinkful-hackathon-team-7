@@ -1,8 +1,8 @@
-const service = require("./comment.service");
+const service = require("./search.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const hasProperties = require("../validations/hasProperties");
 
-const REQUIRED_PROPERTIES = ["comment_body", "user_id", "search_id"];
+const REQUIRED_PROPERTIES = ["search_name", "user_id"];
 const hasRequiredProperties = hasProperties(REQUIRED_PROPERTIES);
 
 // Creates a single comment
