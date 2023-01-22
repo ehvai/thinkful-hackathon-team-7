@@ -59,14 +59,11 @@ export const SplashPage = () => {
 				<Stack gap={0}>
 					<div>
 						A collaborative space created for job searcher, by job searchers.
-					</div>
-					<div>
+						<br></br>
 						Learn about others' job hunting experience at similar industries and
-						companies.
-					</div>
-					<div>
+						companies.<br></br>
 						Filter your search by industry, company, location, remote vs hybrid,
-						and more.
+						and more.<br></br>
 					</div>
 				</Stack>
 				<Stack>
