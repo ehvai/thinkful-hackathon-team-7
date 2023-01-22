@@ -5,7 +5,6 @@ async function userIdExists(req, res, next) {
   const user = await service.validateUser(user_id);
 
   if (user) {
-    console.log("USER ID EXISTS PASSED");
     return next();
   }
 

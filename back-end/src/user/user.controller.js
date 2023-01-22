@@ -1,5 +1,6 @@
 const service = require("./user.service");
 const commentService = require("../comment/comment.service");
+const searchService = require("../search/search.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const userIdExists = require("../validations/user/userIdExists");
 const hasProperties = require("../validations/hasProperties");
@@ -19,8 +20,9 @@ async function list(req, res) {
 async function read(req, res) {
   const { user_id } = req.params;
   const user = await service.read(user_id);
-  const comment = await commentService.userRead(user_id);
-  const user_comment = [{ user }, { comment }];
+  const search = await searchService.read(user_id);
+  const comment = await commentService.read(user_id);
+  const user_comment = [{ user }, { search }, { comment }];
   res.json({ data: user_comment });
 }
 

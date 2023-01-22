@@ -7,11 +7,11 @@ exports.up = function (knex) {
     table.increments("comment_id").primary();
     table.text("comment_body").notNullable;
     table.integer("comment_rating");
-    table.integer("company_id").unsigned().notNullable();
+    table.integer("search_id").unsigned().notNullable();
     table
-      .foreign("company_id")
-      .references("company_id")
-      .inTable("company")
+      .foreign("search_id")
+      .references("search_id")
+      .inTable("search")
       .onDelete("CASCADE");
     table.integer("user_id").unsigned().notNullable();
     table.foreign("user_id").references("user_id").inTable("user");
