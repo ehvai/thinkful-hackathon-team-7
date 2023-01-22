@@ -5,14 +5,7 @@ function list() {
 }
 
 function read(company_id) {
-  return knex.transaction(function (trx) {
-    return trx("company")
-      .where({ company_id })
-      .returning("*")
-      .then(() => {
-        return trx("comment").where({ company_id }).returning("*");
-      });
-  });
+  return knex("company").where({ company_id }).returning("*").first();
 }
 
 function create(newCompany) {

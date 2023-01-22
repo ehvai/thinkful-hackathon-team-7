@@ -5,19 +5,7 @@ function list() {
 }
 
 function read(user_id) {
-  return knex.transaction(function (trx) {
-    return trx("user")
-      .where({ user_id })
-      .returning("*")
-      .then(() => {
-        return trx("comment")
-          .where({ user_id })
-          .returning("*")
-          .then(() => {
-            return trx("process").where({ user_id }).returning("*");
-          });
-      });
-  });
+  return knex("user").where({ user_id }).returning("*").first();
 }
 
 function create(newUser) {

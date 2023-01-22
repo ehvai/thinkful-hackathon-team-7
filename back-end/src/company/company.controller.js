@@ -1,4 +1,5 @@
 const service = require("./company.service");
+const commentService = require("../comment/comment.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const companyIdExists = require("../validations/company/companyIdExists");
 const hasProperties = require("../validations/hasProperties");
@@ -18,7 +19,9 @@ async function list(req, res) {
 async function read(req, res) {
   const { company_id } = res.locals.company;
   const company = await service.read(company_id);
-  res.json({ data: company });
+  const comment = await commentService.companyRead(company_id);
+  const company_comment = [{ company }, { comment }];
+  res.json({ data: company_comment });
 }
 
 // Creates a single company

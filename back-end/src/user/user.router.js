@@ -6,9 +6,10 @@ router.route("/completeList").get(controller.list).all(methodNotAllowed);
 
 router.route("/login").post(controller.verifyLogin).all(methodNotAllowed);
 
+router.route("/:user_id").get(controller.read).all(methodNotAllowed);
+
 router
   .route("/")
-  .get(controller.read)
   .put(controller.update)
   .post(controller.create)
   .all(methodNotAllowed);
