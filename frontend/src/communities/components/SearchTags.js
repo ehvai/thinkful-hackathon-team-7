@@ -30,7 +30,7 @@ export const SearchTags = () => {
 		<React.Fragment>
 			<div className="d-flex flex-column py-3">
 				<div>
-					<Button as="div" variant="light">
+					<Button as="div" variant="light" disabled>
 						Current Search
 					</Button>
 				</div>
