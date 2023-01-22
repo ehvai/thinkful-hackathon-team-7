@@ -56,12 +56,12 @@ async function fetchJson(url, options, onCancel) {
  * @return {Promise<[user login]>}
  *  a promise
  */
-export async function loginCredentials(user, signal) {
+export async function loginCredentials(credentials, signal) {
 	const url = `${API_BASE_URL}/user/login`;
 	const options = {
 		method: "POST",
 		headers,
-		body: JSON.stringify({ data: user }),
+		body: JSON.stringify({ data: credentials }),
 		signal,
 	};
 
@@ -89,12 +89,12 @@ export async function logoutCredentials(signal) {
  * @return {Promise<[new user]>}
  *  a promise with new user
  */
-export async function createUser(user, signal) {
+export async function createUser(newUser, signal) {
 	const url = `${API_BASE_URL}/user`;
 	const options = {
 		method: "POST",
 		headers,
-		body: JSON.stringify({ data: user }),
+		body: JSON.stringify({ data: newUser }),
 		signal,
 	};
 

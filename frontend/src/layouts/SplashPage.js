@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Row, Col, Stack, Modal, Form } from "react-bootstrap";
-import Login from "./Login";
-import Signup from "./Signup";
+import { Login, Signup } from "../layouts";
 
 export const SplashPage = () => {
 	const [showLogin, setShowLogin] = useState(false);
@@ -60,14 +59,11 @@ export const SplashPage = () => {
 				<Stack gap={0}>
 					<div>
 						A collaborative space created for job searcher, by job searchers.
-					</div>
-					<div>
+						<br></br>
 						Learn about others' job hunting experience at similar industries and
-						companies.
-					</div>
-					<div>
+						companies.<br></br>
 						Filter your search by industry, company, location, remote vs hybrid,
-						and more.
+						and more.<br></br>
 					</div>
 				</Stack>
 				<Stack>

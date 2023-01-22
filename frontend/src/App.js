@@ -2,9 +2,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React from "react";
 import { Container } from "react-bootstrap";
-import { Path } from "./layouts/Paths";
+import { Path, Footer } from "./layouts";
 import { NavigationBar } from "./components";
-import { Footer } from "./layouts";
 
 function App() {
 	return (
