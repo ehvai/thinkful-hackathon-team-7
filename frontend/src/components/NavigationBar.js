@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Nav, Navbar, Container, Modal, Button } from "react-bootstrap";
-import { FeedPersonIcon } from "@primer/octicons-react";
 import { Login, Signup } from "../layouts";
 
 const loginArr = ["Sign up!", "Login"];
-const loggedInArr = ["Home", "Profile"];
+const loggedInArr = ["Community", "My-Profile"];
 
 export const NavigationBar = () => {
+	let location = useLocation();
+	console.log(location);
 	const [login, setLogin] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
 	const [showSignUp, setShowSignUp] = useState(false);
@@ -66,10 +68,14 @@ export const NavigationBar = () => {
 	const navLoggedin = loggedInArr.map((element, i) => (
 		<div className="px-2" key={i}>
 			<Nav.Link
-				className="text-white fs-4"
-				href={i === 0 ? "/" : element.toLocaleLowerCase()}
+				className={
+					location.pathname === `/${element.toLocaleLowerCase()}`
+						? "text-white fs-4 text-decoration-underline"
+						: "text-white fs-4"
+				}
+				href={element.toLocaleLowerCase()}
 			>
-				{i === 0 ? element : <FeedPersonIcon size={32} />}
+				{i === 1 ? element.replace(" ", "-") : element}
 			</Nav.Link>
 		</div>
 	));
@@ -86,7 +92,7 @@ export const NavigationBar = () => {
 								JobSeekrz
 							</Nav.Link>
 						</div>
-						{!login ? navLogin : navLoggedin}
+						{login ? navLogin : navLoggedin}
 					</Nav>
 				</Container>
 			</Navbar>
