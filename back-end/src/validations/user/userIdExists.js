@@ -1,11 +1,11 @@
 const service = require("../../user/user.service");
 
 async function userIdExists(req, res, next) {
-  const { user_id } = req.body.data;
+  const { user_id } = req.params;
   const user = await service.validateUser(user_id);
 
   if (user) {
-    res.locals.user = user;
+    console.log("USER ID EXISTS PASSED");
     return next();
   }
 

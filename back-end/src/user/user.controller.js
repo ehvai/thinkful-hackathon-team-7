@@ -1,4 +1,5 @@
 const service = require("./user.service");
+const commentService = require("../comment/comment.service");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const userIdExists = require("../validations/user/userIdExists");
 const hasProperties = require("../validations/hasProperties");
@@ -16,9 +17,11 @@ async function list(req, res) {
 
 // Returns a single user as requested by the user_id.  If no ID is provided, an error message is returned via the userIdExists validation.
 async function read(req, res) {
-  const { user_id } = res.locals.user;
+  const { user_id } = req.params;
   const user = await service.read(user_id);
-  res.json({ data: user });
+  const comment = await commentService.userRead(user_id);
+  const user_comment = [{ user }, { comment }];
+  res.json({ data: user_comment });
 }
 
 async function verifyLogin(req, res) {
